@@ -11,3 +11,6 @@ Proposed System
 4.	Consultation: The patient meets with the doctor for their scheduled appointment. During the consultation, the doctor evaluates the patient's condition, provides medical advice, and prescribes medications or treatment as necessary.
 5.	Billing and Payment: After the consultation, the payment of consultancy will be done direct to the doctor, if applicable.
 
+WEBSITE HOMEPAGE
+
+![Screenshot 2025-04-12 155204](https://github.com/user-attachments/assets/dceebc1b-093d-4614-8b73-bccbc64ab4f4)
