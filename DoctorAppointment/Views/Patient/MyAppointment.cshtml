@@ -1,0 +1,156 @@
+﻿@model IEnumerable<DoctorAppointment.Models.AppointmentModel>
+@{
+    ViewBag.Title = "MyAppointment";
+    Layout = "~/Views/Shared/myapp.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["SuccessMessage"]")
+    </script>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["ErrorMessage"]");
+    </script>
+}
+
+<style>
+    /* Styles for the background video */
+    .background-video {
+        position: fixed; /* Make the video fixed to the viewport */
+        top: 0;
+        left: 0;
+        width: 100%; /* Cover full width */
+        height: 100%; /* Cover full height */
+        object-fit: cover; /* Cover the container without distorting */
+        z-index: -1; /* Set below other content */
+    }
+
+    /* Make sure content above the video is visible */
+    .content {
+        position: relative;
+        z-index: 1; /* Bring content above the video */
+        padding: 20px; /* Optional: Add some padding */
+        color: white; /* Text color for visibility */
+    }
+</style>
+
+
+<script src="~/scripts/jquery-3.7.1.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="~/scripts/datatables-simple-demo.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#datatablesSimple').DataTable();
+    });
+</script>
+
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+    <div class="col-lg-8 col-xl-9">
+        <div class="container-fluid px-4">
+            <div class="card" style="height: 100px; display: flex; align-items: center; justify-content: center; border-radius: 100px;">
+
+
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <video class="background-video" autoplay loop muted>
+                        <source src="~/content/video/istock_video_1733074868276.mp4" type="video/mp4"> <!-- Replace with your video file -->
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <h1 style="font-size: 36px; margin: 0;">Appointment</h1>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div style=" display: flex; justify-content: center; margin-top: 100px; ">
+    <div class="col-lg-8 col-xl-9">
+        <div class="container-fluid px-4">
+            <div class="card" style="background-color: transparent; backdrop-filter: blur(20px); border-radius: 50px; ">
+                <div class="card-body">
+                    <table id="datatablesSimple" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>Appointment Date</th>
+                                <th>Time</th>
+                                <th>Appointment Status</th>
+                                <th>Payment Screenshot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AppointmentDate.ToShortDateString()</td>
+                                    <td>@item.StartTime - @item.EndTime</td>
+                                    <td>@item.AptStatus</td>
+                                    @*<td><img style="width:200px; height:150px;" src="~/content/Images/@item.PaymentScreenshotName" /></td>*@
+                                    <td>
+                                        <img style="width:200px; height:150px;" src="~/content/Images/paymentscreenshot/@item.PaymentScreenshot" />
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@*<div class="col-lg-8 col-xl-9">
+        <div class="container-fluid px-4">
+            <div class="card">
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Appointment Date</th>
+                                <th>Time</th>
+                                <th>Appointment Status</th>
+                                <th>Payment  ScreenShot</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AppointmentDate.ToShortDateString()</td>
+                                    <td>@item.StartTime - @item.EndTime</td>
+                                    <td>@item.AptStatus</td>
+                                    <td><img style="width:200px; height:150px;" src="~/content/Images/@item.PaymentScreenshotName" /></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+

@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Fees";
+    Layout = "~/Views/Shared/DOCDashboard.cshtml";
+}
+
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Full height of the viewport */
+        margin: 0;
+        background-color: #f4f4f4; /* Optional background color for the body */
+    }
+
+    .form-container {
+        background-color: white; /* White background for the form */
+        border-radius: 30px; /* Rounded corners */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Box shadow */
+        padding: 30px; /* Padding inside the container */
+        width: 800px; /* Set a fixed width for the form */
+        text-align: center; /* Center text inside the form */
+    }
+
+    .form-control {
+        width: 100%; /* Full width for input fields */
+        padding: 10px; /* Padding for input fields */
+        margin: 10px 0; /* Space between input fields */
+        border-radius: 5px; /* Rounded corners for input fields */
+        border: 1px solid #ccc; /* Border for input fields */
+    }
+
+    #btm-xwhy {
+        text-decoration: none;
+        margin-bottom: 20px;
+        color: #000;
+        font-weight: bold;
+        font-size: 20px;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        border: 1.5px solid #000;
+        border-radius: 50px;
+        cursor: pointer;
+        padding: 10px 20px;
+        outline: none;
+        overflow: hidden;
+        transition: all ease 0.4s;
+        display: block; /* Add this line to make the button a block element */
+        margin-left: auto; /* Center the button */
+        margin-right: auto; /* Center the button */
+    }
+
+
+        #btm-xwhy::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -100%;
+            height: 100%;
+            width: 100%;
+            background-color: #000;
+            transition: all ease 0.4s;
+            z-index: -1;
+        }
+
+        #btm-xwhy:hover::after {
+            bottom: 0;
+            border-radius: 16%;
+        }
+
+        #btm-xwhy:hover span {
+            color: #fff;
+        }
+</style>
+
+
+<br />
+
+<div class="form-container">
+    <form action="@Url.Action("Fees", "Doctor")" method="post">
+        <label>Enter Your Fee Amount:</label>
+        <input type="hidden" value="@ViewBag.FeeId" name="FeeId" />
+        <input type="number" name="FeesAmount" value="@ViewBag.FeeAmount" class="form-control" />
+
+        @if (ViewBag.FeeId > 0)
+        {
+            <button id="btm-xwhy" type="submit">
+                <span>Update Fees</span>
+            </button>
+        }
+        else
+        {
+            <button id="btm-xwhy" type="submit">
+                <span>Add Fees</span>
+            </button>
+        }
+
+        @if (TempData["SuccessMsg"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMsg"]</div>
+        }
+        else if (ViewBag.ErrorMsg != null)
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMsg</div>
+        }
+
+    </form>
+</div>

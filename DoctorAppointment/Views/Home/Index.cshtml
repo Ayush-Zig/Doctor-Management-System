@@ -1,0 +1,349 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Main-Content -->
+<div class="container">
+    <div class="Left-Content">
+        <h2>PURPOSE OF YOURCARE</h2>
+        <h1>Detailed Diagnostic <br> of Your Body</h1>
+        <p>
+            Health is the most important thing. <br>
+            So don't put it off for later. Think about your future today.
+        </p>
+        @if (Session["UserName"] != null)
+        {
+          <ul class="nav-list">  <li><a href="@Url.Action("BookAppointment", "Home")">Book Appointment</a></li></ul>
+        }
+        else
+        {
+            <ul class="nav-list"> <li><a href="@Url.Action("Register", "Account")">Register</a></li></ul>
+        }
+
+    </div>
+
+    <!-- Video-section Start -->
+    <div class="Right-Side">
+        <video autoplay loop muted>
+            <source src="~/assests/vid/Section%20(online-video-cutter.com).mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- <div class="Small-one">
+        <video autoplay loop muted>
+            <source src="assests/8cbfa48e505d814936110b0f1a46c8d1-720p-preview (1).mp4" type="video/mp4">
+        </video>
+    </div>
+    <span class="Small-tird-one">
+      <video autoplay loop muted>
+          <source src="assests/8cbfa48e505d814936110b0f1a46c8d1-720p-preview (1).mp4" type="video/mp4">
+      </video>
+    </span> -->
+    <!-- Video-section End -->
+</div>
+
+<!-- Info Section Start -->
+<div class="info-section">
+    <div class="Info-Num">01</div>
+    <div class="Info-Text">
+        <h3>First Clinical To serve <br> You From Home.</h3>
+        <p class="date-one-para">2021-06-18</p>
+        <p>YOURCARE Clinic is now open, offering personalized healthcare services with experienced doctors dedicated to your well-being. Visit us today for quality care. Our state-of-the-art facility ensures a comfortable and compassionate environment tailored to meet your health needs. From routine checkups to specialized treatments, we are here to support you every step of the way. Experience healthcare that truly cares—because your health matters to us.</p>
+    </div>
+</div>
+<!-- Info Section End -->
+<!-- moving-text -->
+
+<div class="moving-text">
+
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+
+</div>
+
+<!-- moving-text-end -->
+<!-- second-infosection -->
+
+<div class="container---another">
+
+
+    <span class="second-leftsection">
+        <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+            <source src="~/assests/4c639440db7f1087446126d316ac018f-720p-preview%20(online-video-cutter.com).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </span>
+
+    <span class="Above-firstDiv">
+        <div>
+            <div> <img src="~/assests/img/doc1.jpg" alt=""></div>
+            <div><img src="~/assests/img/doctor-preparing-consult.jpg" alt=""></div>
+            <div><img src="~/assests/img/man-working-as-paediatrician.jpg" alt=""></div>
+            <div><img src="~/assests/img/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture.jpg" alt=""></div>
+        </div>
+    </span>
+
+    <span class="Learn-More">
+        <div class="ParA-One">
+            <p>
+                Driven by rich history expertise of and a relentless pursuit of scientific execellence
+            </p>
+
+            <ul class="cta-btnnSecond"><li><a href="#">Learn More</a></li></ul>
+        </div>
+</div></span>
+
+<span class="List-Speacility">
+    <div>
+        <ul>
+            <li>
+                <span class="icon"></span>
+                <ion-icon name="caret-forward-circle-outline"></ion-icon>
+</span> Unparalled Diagnostic</li>
+<li>
+    <span class="icon"></span>
+    <ion-icon name="caret-forward-circle-outline"></ion-icon>
+    </span>Global Reach
+</li>
+<li>
+    <span class="icon"></span>
+    <ion-icon name="caret-forward-circle-outline"></ion-icon>
+    </span>Research Excellence
+</li>
+      </ul>
+    </div>
+   </span>
+
+
+<span class="third-pic">
+
+    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+        <source src="~/assests/9a4a9357f04d5e26629cbef43b959483-720p-preview%20(online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</span>
+
+<span class="Above-Div">
+    <div>
+        <p>Good Interaction with other molecule</p>
+        <a href="#" class="cta-btnthird">Learn More</a>
+    </div>
+</span>
+
+
+<span class="Sec-Para">
+    <div class="Text-Edit">
+        <p>We are at the forefront of personalized health, offering unparalleled diagnostic capabilities.</p>
+        <p>YourCare has consistently expanded its reach to cater to the evolving needs of healthcare worldwide.</p>
+        <p>YourCare excels in the field of oncology research, with accreditation by IAM and CLIA.</p>
+    </div>
+</span>
+    </div>
+
+
+
+<!-- second-infosection end -->
+<!-- Another-section-start -->
+
+<div class="containerinfo">
+
+    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+        <source src="~/assests/istock_3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="cta-btn-appointment">
+        <a href="#" class="">Make An Appointment</a>
+    </div>
+
+    <div class="cta-btn-CheckUp">
+        <a href="#" class="">Make A Whole Body CheckUp</a>
+    </div>
+
+    <div class="cta-btn-Health">
+        <a href="#" class="">Protect Your Health</a>
+    </div>
+    <div class="para-Health">
+        <p>Your Source For Knowledge and Insights</p>
+    </div>
+
+    <div class="cta-Div-Outer">
+        <div>
+            <p class="para-1">HeartRate</p>
+            <p class="para-2">Average Rate</p>
+            <p class="para-3">The Cause of heart palpitations <br> is tachycardia.</p>
+        </div>
+
+        <p class="ctn-RATe">
+            92<sub class="Sub-Cript">bpm</sub>         <div class="inner-onesec">
+    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+        <source src="~/assests/fotor-video_remover_object-preview-20240928215312.webm" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+        </p>
+
+
+    </div>
+
+</div>
+
+<!-- Another-section-end -->
+
+
+
+
+
+
+<div class="moving-text">
+
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+    <div class="container-01">
+        <h1>HEALTH PRECISION</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>GENETIC INSIGHT</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+        <h1>EXPERIENCE</h1>
+        <span class="Moving-Icon"><ion-icon name="caret-forward-circle-outline"></ion-icon></span>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- speacilities-sections start -->
+
+<div class="outer-speacility-sec">
+    <h2 class="section-titles">Specialities</h2>
+
+    <div class="animation-one">
+        <div class="container-wrapper">
+            <div class="container-097">
+                <div class="black-box">
+                    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="~/assests/f76e01c4de5821a95e85718ad73d0243-720p-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+            
+                </div>
+                <div class="red-box">
+                    <p>HeartSurgeon</p>
+                    <p class="IN-Para-Detail">"Dedicated to restoring heart health through advanced techniques, compassionate care, and innovative treatments for all cardiovascular conditions and diseases."</p>
+                </div>
+            </div>
+            <div class="container-097">
+                <div class="black-box">
+                    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="~/assests/istock_1996906927.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                
+                </div>
+                <div class="red-box">
+                    <p>Dermatalogy</p>
+                    <p class="IN-Para-Detail">"Specializing in skin health, our dermatology services focus on diagnosing, treating, and preventing conditions for radiant and healthy skin." </p>
+                </div>
+            </div>
+            <div class="container-097">
+                <div class="black-box">
+                    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="~/assests/istock_1248763285.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                  
+                </div>
+                <div class="red-box">
+                    <P>NeuroSurgeon</P>
+                    <p class="IN-Para-Detail">"Expertly performing intricate surgeries, we address brain, spine, and nervous system disorders with precision, compassion, and cutting-edge technology for better outcomes."</p>
+                </div>
+            </div>
+            <div class="container-097">
+                <div class="black-box">
+                    <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="~/assests/b72db0269c68ad01aa30a64eb48f69af-720p-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                  
+                </div>
+                <div class="red-box">
+                    <p>Radiology</p> <p class="IN-Para-Detail">"Utilizing cutting-edge imaging technology, our radiology team diagnoses and treats conditions, ensuring precise evaluations for optimal patient care and outcomes."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- speacility-section-end -->
+<!-- last-background-section start -->
+
+<div class="last-background-section start">
+    <div class="outer-ani-vido-bck">
+        <video autoplay muted loop disablepictureinpicture controlsList="nodownload nofullscreen noremoteplayback">
+            <source src="~/assests/27e66f63e2f146d39e3f0f6e7ebf4b1a-720p-preview%20(online-video-cutter.com).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>  <div class="inner-child"><p>YOURCARE</p></div>
+    </div>
+</div>
+
+<!-- last-background-section start -->

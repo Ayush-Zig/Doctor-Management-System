@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/content/landPage.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Header Section Start -->
+    <header>
+        <div class="Logo">YOUR<span class="orange-text">CARE</span> <span class="Logo-Vidoz"><img src="~/assests/img/healthcare.png" alt=""></span></div>
+        <!-- Navigation Bar Start -->
+
+        <nav>
+            <ul class="nav-list">
+
+
+
+
+
+                @if (Session["UserName"] != null)
+                {
+                    <li><a href="@Url.Action("BookAppointment", "Home")">Book Appointment</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("Register", "Account")">Register</a></li>
+
+                    <li><a href="@Url.Action("Login", "Account")">Login</a></li>
+                }
+            </ul>
+        </nav>
+        <!-- Navigation Bar End -->
+    </header>
+    <!-- Header Section End -->
+
+    @RenderBody()
+
+
+
+    <!-- footer-sec start-->
+
+
+    <div class="footer-section">
+        <footer class="footer">
+           
+            <ul class="social-icon">
+                <li class="social-icon__item">
+                    <a class="social-icon__link" href="#">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+                <li class="social-icon__item">
+                    <a class="social-icon__link" href="#">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                </li>
+                <li class="social-icon__item">
+                    <a class="social-icon__link" href="#">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                </li>
+                <li class="social-icon__item">
+                    <a class="social-icon__link" href="#">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+
+            </ul>
+            <p>&copy;2021 YOURCARE | All Rights Reserved</p>
+        </footer>
+    </div>
+
+
+
+    <!-- footer-end -->
+
+    <script src="~/scripts/javajs.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
+    <link href="~/content/styles.css" rel="stylesheet" />
+    @*<link rel="icon" type="image/x-icon" href="~/assests/favicon.png" />*@
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="nav-fixed">
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
+        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">Appointment Solution</a>
+        <ul class="navbar-nav align-items-center ms-auto">
+
+            <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="/content/Images/Profiles/doctor-preparing-consult.jpg" /></a>
+                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <h6 class="dropdown-header d-flex align-items-center">
+                        <img class="dropdown-user-img" src="~/content/Images/Profiles/doctor-preparing-consult.jpg" />
+
+                        
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-details-name"> @Session["UserName"]</div>
+                            <div class="dropdown-user-details-email">@Session["Email"]</div>
+                        </div>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
+                        Account
+                    </a>
+                    <a class="dropdown-item" href="@Url.Action("Logout", "Account")">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sidenav shadow-right sidenav-light">
+                <div class="sidenav-menu">
+                    <div class="nav accordion" id="accordionSidenav">
+
+                        <div class="sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="@Url.Action("Dashboard", "Doctor")">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sidenav-menu-heading">Custom</div>
+                        <a class="nav-link collapsed" href="@Url.Action("AppointmentList", "Doctor")">
+                            <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                            Appointment List
+                        </a>
+
+                        <a class="nav-link collapsed" href="@Url.Action("CreateSlots", "Doctor")">
+                            <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                            Create Slots
+                        </a>
+
+                        <a class="nav-link collapsed" href="@Url.Action("Fees", "Doctor")">
+                            <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                            Add Fees
+                        </a>
+
+                        <div class="sidenav-menu-heading">Setting</div>
+                        <a class="nav-link" href="@Url.Action("Logout", "Account")">
+                            <div class="nav-link-icon"><i data-feather="package"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="sidenav-footer">
+                    <div class="sidenav-footer-content">
+                        <div class="sidenav-footer-subtitle">Logged in as: @Session["UserName"]</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            @RenderBody()
+            <footer class="footer-admin">
+                <div class="container-xl">
+                    <div class="row">
+                        <div class="col-md-12 small text-center">Copyright &copy; Your Website 2024 - Crafted with  by AV.</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/chart-area-demo.js"></script>
+    <script src="~/scripts/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/datatables-simple-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/litepicker.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

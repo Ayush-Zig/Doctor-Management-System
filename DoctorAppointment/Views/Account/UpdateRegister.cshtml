@@ -1,0 +1,74 @@
+﻿@model DoctorAppointment.Models.UserModel
+
+@{
+    ViewBag.Title = "UpdateRegister";
+    Layout = "~/Views/Shared/RegisterLay.cshtml";
+}
+
+<section class="Login-Sec">
+    <video autoplay loop muted class="video-background">
+        <source src="~/assests/img/istock_1873666444.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="Inner-div">
+                    <div class="row w-100">
+                        <!-- Left content -->
+                        <div class="col-md-6 d-flex align-items-center justify-content-center" id="left-content">
+                            <input type="hidden" name="UserId" value="@Model.UserId" />
+
+                            <form action="@Url.Action("UpdateRegister", "Account")" method="post">
+                                <h2 class="text-center mb-4">Update Profile</h2>
+
+                                <!-- Hidden field for UserId -->
+                                <input type="hidden" name="UserId" value="@Model.UserId" />
+
+                                <div class="row">
+                                    <div class="col-md-6 form-outline mb-4">
+                                        <label for="PhoneNumber">Phone Number</label>
+                                        <input type="tel" class="form-control" name="PhoneNumber" value="@Model.PhoneNumber" required />
+                                    </div>
+
+                                    <div class="col-md-6 form-outline mb-4">
+                                        <label for="DateOfBirth">Date of Birth</label>
+                                        <input type="date" class="form-control" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" name="Password" required />
+                                </div>
+
+                                <button type="submit" class="nav-button">
+                                    <span>Update</span>
+                                </button>
+
+                                @if (ViewBag.SuccessMessage != null)
+                                {
+                                    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                                }
+                                else if (ViewBag.ErrorMessage != null)
+                                {
+                                    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                                }
+                            </form>
+                        </div>
+
+                        <!-- Right content -->
+                        <div class="col-md-6">
+                            <div class="Inner-div" id="right-second">
+                                <video autoplay loop muted class="video-background">
+                                    <source src="~/assests/img/istock_1873666444.mp4" type="video/mp4">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,379 @@
+﻿@model IEnumerable<DoctorAppointment.Models.slots>
+@{
+    ViewBag.Title = "CreateSlots";
+    Layout = "~/Views/Shared/DOCDashboard.cshtml";
+}
+
+
+<style>
+    .selected-slot {
+        border: 2px solid #007bff;
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    .alldays {
+        margin-right: 24px;
+    }
+
+        .alldays.active button {
+            background-color: #16568F;
+            color: white;
+        }
+
+    span.badge.bg-primary-soft.text-primary.py-2.px-3.mb-2 {
+        margin-right: 10px;
+    }
+
+    a.text-primary.addSlot {
+        margin-right: 20px;
+    }
+
+    .card-header.bgTra {
+        background-color: transparent;
+    }
+
+    .form-check {
+        display: inline-block;
+        padding-left: 2.5em;
+    }
+
+
+    .slot-box {
+        border: 1px solid #e9e5e5;
+        height: 30px;
+        width: 160px;
+        padding: 4px;
+        border-radius: 5px;
+        background-color: #16568F;
+        cursor: pointer;
+        margin-inline: 10px;
+    }
+
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa; /* Default background */
+        color: #000; /* Default text color */
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    input[type="checkbox"]:checked + label .btn {
+        background-color: #29568F; /* Background color when checked */
+        color: white; /* Text color when checked */
+    }
+</style>
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container-xl px-4">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                            Select Available Slots
+                        </h1>
+                        <div class="page-header-subtitle">
+                            Appointment Settings : Select available slots to
+                            book your preferred time.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-xl px-4 mt-n10">
+        <div class="row">
+            <div class="col-xxl-8">
+                <div class="card mb-4">
+                    <div class="card-header border-bottom">
+                        <ul class="nav nav-tabs card-header-tabs" id="dashboardNav" role="tablist">
+                            <li class="nav-item me-1">
+                                <a class="nav-link active" id="ForDays-pill"
+                                   href="#ForDays" data-bs-toggle="tab" role="tab" aria-controls="ForDays"
+                                   aria-selected="true">Assign Slots For Day's</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="dashboardNavContent">
+                        <div class="tab-pane fade show active" id="ForDays" role="tabpanel"
+                             aria-labelledby="ForDays-pill">
+                            <form action="@Url.Action("AssignSlots", "Doctor")" method="post">
+
+                                <div class="card-header bgTra border-bottom">
+            <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard"
+                 id="cardTab" role="tablist">
+                <input type="checkbox" id="Monday" value="1" name="days" style="display:none;" />
+                <label for="Monday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Monday</span>
+                </label>
+
+
+                <input type="checkbox" id="Tuesday" value="2" name="days" style="display:none;" />
+                <label for="Tuesday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Tuesday</span>
+                </label>
+
+
+                <input type="checkbox" id="Wednesday" value="3" name="days" style="display:none;" />
+                <label for="Wednesday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Wednesday</span>
+                </label>
+
+                <input type="checkbox" id="Thursday" value="4" name="days" style="display:none;" />
+                <label for="Thursday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Thursday</span>
+                </label>
+
+
+
+                <input type="checkbox" id="Friday" value="5" name="days" style="display:none;" />
+                <label for="Friday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Friday</span>
+                </label>
+
+                <input type="checkbox" id="Saturday" value="6" name="days" style="display:none;" />
+                <label for="Saturday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Saturday</span>
+                </label>
+
+                <input type="checkbox" id="Sunday" value="7" name="days" style="display:none;" />
+                <label for="Sunday" class="alldays" id="wizard1-tab"
+                       data-bs-toggle="tab" role="tab" aria-controls="wizard1"
+                       aria-selected="true">
+                    <span class="btn">Sunday</span>
+                </label>
+
+
+            </div>
+        </div>
+
+        <div class="tab-content" id="cardTabContent">
+            <div class="tab-pane fade show active" id="wizard1" role="tabpanel"
+                 aria-labelledby="wizard1-tab">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-12 col-xl-12">
+                        <div class="card-header-actions">
+                            <div class="card-header">
+                                <p></p>
+                                <div class="">
+                                    <a class="text-primary addSlot"
+                                       href="javascript:void(0)" data-bs-toggle="modal"
+                                       data-bs-target="#mondayAddnewSlot">Add Slot</a>
+                                    <a class="text-danger" href="">Delete All</a>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 pb-0">
+
+
+
+                                @*<div class="px-3">
+            @foreach (var item in Model)
+            {
+                <div id="@item.SlotId" onclick="CheckSlot(this.id)"
+                     class="slot-box badge bg-primary-soft text-primary py-2 px-3 mb-2">
+                    <input type="checkbox" id="slot_@item.SlotId" value="@item.SlotId" name="SlotIds" style="display:none;" />
+                    <i class="fa fa-clock"></i>
+                    <span>@item.StartTime - @item.EndTime</span>
+                </div>
+            }
+        </div>*@
+
+                                <div class="nav nav-pills">
+                                    @foreach (var day in new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" })
+                                    {
+                                        <input type="checkbox" id="@day"
+                                               value="@Array.IndexOf(new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }, day) + 1"
+                                               name="days" style="display:none;" />
+                                        <label for="@day" class="alldays">
+                                            <span class="btn">@day</span>
+                                        </label>
+                                    }
+                                </div>
+
+
+                                <div class="px-3">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div id="@item.SlotId" onclick="CheckSlot(this.id)" class="slot-box badge bg-primary-soft text-primary py-2 px-3 mb-2">
+                                            <input type="checkbox" id="slot_@item.SlotId" value="@item.SlotId" name="SlotIds" style="display:none;" />
+                                            <i class="fa fa-clock"></i>
+                                            <span>@item.StartTime - @item.EndTime</span>
+                                        </div>
+                                    }
+                                </div>
+
+
+
+
+
+
+
+                                <div class="px-3">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Slot ID</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                                <th>Capacity</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var slot in Model)
+                                            {
+                                                <tr>
+                                                    <td>@slot.SlotId</td>
+                                                    <td>@slot.StartTime</td>
+                                                    <td>@slot.EndTime</td>
+                                                    <td>@slot.Capacity</td>
+                                                    <td>
+                                                        <form action="@Url.Action("DeleteSlot", "Doctor")" method="post">
+                                                            <input type="hidden" name="slotId" value="@slot.SlotId" />
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- monday tab END  -->
+
+
+                                    <button class="btn btn-primary my-4 mx-4" type="submit">Save changes</button>
+
+                                </div>
+
+                            </form>
+                            @if (TempData["SuccessMsg"] != null)
+                            {
+                                <div class="alert alert-success">@TempData["SuccessMsg"]</div>
+                            }
+                            else if (TempData["ErrorMsg"] != null)
+                            {
+                                <div class="alert alert-danger">@TempData["ErrorMsg"]</div>
+                            }
+                        </div>
+                        <div class="tab-pane fade" id="SpecificDates" role="tabpanel"
+                             aria-labelledby="SpecificDates-pill">
+                            <h2>Assign Slots to Specific Dates</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- add new slot START -->
+    <div class="modal fade" id="mondayAddnewSlot" data-bs-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Slot</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <form action="@Url.Action("CreateSlots", "Doctor")" method="post">
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="small mb-1" for="">Start Time</label>
+                                <input class="form-control" id="" type="time" name="StartTime" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="">End Time</label>
+                                <input class="form-control" id="" type="time" name="EndTime" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="">Assign Appointment Spaces:</label>
+                                <br />
+                                <div class="form-check">
+                                    <input class="form-check-input" id="space1" type="radio" value="1" name="Capacity"
+                                           checked="">
+                                    <label class="form-check-label" for="space1">Space 1</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="space2" type="radio" value="2" name="Capacity">
+                                    <label class="form-check-label" for="space2">Space 2</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="space3" type="radio" value="3" name="Capacity">
+                                    <label class="form-check-label" for="space3">Space 3</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button"
+                                data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- add new slot END -->
+
+</main>
+
+
+<script>
+    //function CheckSlot(id) {
+    //    alert(id);
+    //    document.getElementById(id).style.border = "1px solid blue";
+    //}
+
+    function CheckSlot(id) {
+        const checkbox = document.getElementById(`slot_${id}`);
+        if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+            document.getElementById(id).style.border = checkbox.checked ? "1px solid blue" : "none";
+            slotBox.classList.add("selected-slot"); // Add a class to indicate selection
+        }else {
+    slotBox.classList.remove("selected-slot"); // Remove the class if deselected
+        }
+    }
+
+    //function CheckSlot(id) {
+    //    var checkbox = document.getElementById("slot_" + id);
+    //    checkbox.checked = !checkbox.checked;
+
+    //    // Optional: Add visual feedback for selection
+    //    var slotBox = document.getElementById(id);
+    //    if (checkbox.checked) {
+    //        slotBox.classList.add("selected-slot"); // Add a class to indicate selection
+    //    } else {
+    //        slotBox.classList.remove("selected-slot"); // Remove the class if deselected
+    //    }
+    //}
+
+</script>

@@ -1,0 +1,93 @@
+﻿@model DoctorAppointment.Models.UserModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/RegisterLay.cshtml";
+}
+
+<section class="Login-Sec">
+    <video autoplay loop muted class="video-background">
+        <source src="~/assests/img/0e5896644e8498fb1f6910c4e7ee3af5-720p-preview%20(1)%20(online-video-cutter.com)%20(online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="Inner-div">
+                    <div class="row w-100">
+                        <!-- Left content -->
+                        <div class="col-md-6 d-flex align-items-center justify-content-center" id="left-content">
+
+                            <form class="slide-in" action="@Url.Action("Register", "Account")" method="post" >
+                                <h2 class="text-center mb-4">Register</h2>
+
+                                <!-- Name input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="text" class="form-control" id="inputsecdes" placeholder="Name" name="UserName" required />
+                                </div>
+
+                                <!-- Email input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="email" class="form-control" id="inputsecdes" placeholder="Email address" name="Email" required />
+                                </div>
+
+                                <div class="row">
+                                    <!-- Phone input -->
+                                    <div class="col-md-6 form-outline mb-4">
+                                        <input type="tel" class="form-control" id="inputsecdes" placeholder="Phone Number" name="PhoneNumber" />
+                                    </div>
+
+                                    <!-- Age input -->
+                                    <div class="col-md-6 form-outline mb-4">
+                                        <input type="date" class="form-control" id="inputsecdes" placeholder="Select Your Date of Birth" required name="DateOfBirth" />
+                                    </div>
+                                </div>
+
+                                <!-- Address input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="text" class="form-control" id="inputsecdes" placeholder="Address" />
+                                </div>
+
+                                <!-- Password input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="password" class="form-control" id="inputsecdes" placeholder="Password" name="Password" required />
+                                </div>
+
+                                <!-- Submit button -->
+                                <button class="nav-button" id="btm-xwhy" type="submit">
+                                    <span>Register</span>
+                                </button>
+
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Already Registered? <a href="@Url.Action("Login", "Account")" style="text-decoration: none;">Login</a></p>
+                                </div>
+
+                                
+                                @if (ViewBag.SuccessMessage != null)
+                                {
+                                    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                                }
+                                else if (ViewBag.ErrorMessage != null)
+                                {
+                                    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                                }
+                            </form>
+                          
+                        </div>
+
+                        <!-- Right content -->
+                        <div class="col-md-6">
+                            <div class="Inner-div" id="right-second">
+                                <video autoplay loop muted class="video-background">
+                                    <source src="~/assests/img/istock_19%20(online-video-cutter.com).mp4" type="video/mp4">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

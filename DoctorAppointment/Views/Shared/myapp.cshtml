@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
+    <link href="~/content/styles.css" rel="stylesheet" />
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    <style>
+        /* Styles for the background video */
+        .background-video {
+            position: fixed; /* Make the video fixed to the viewport */
+            top: 0;
+            left: 0;
+            width: 100%; /* Cover full width */
+            height: 100%; /* Cover full height */
+            object-fit: cover; /* Cover the container without distorting */
+            z-index: -1; /* Set below other content */
+        }
+
+        /* Make sure content above the video is visible */
+        .content {
+            position: relative;
+            z-index: 1; /* Bring content above the video */
+            padding: 20px; /* Optional: Add some padding */
+            color: white; /* Text color for visibility */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay loop muted>
+        <source src="~/content/video/istock_video_1733074868276.mp4" type="video/mp4"> <!-- Replace with your video file -->
+        Your browser does not support HTML5 video.
+    </video>
+    
+
+    <!-- Main Content -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/chart-area-demo.js"></script>
+    <script src="~/scripts/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/datatables-simple-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
+    <script src="~/scripts/litepicker.js"></script>
+</body>
+
+</html>

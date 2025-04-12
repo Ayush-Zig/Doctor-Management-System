@@ -1,0 +1,261 @@
+﻿
+
+@model IEnumerable<DoctorAppointment.Models.AppointmentModel>
+
+@{
+    ViewBag.Title = "AppointmentList";
+    Layout = "~/Views/Shared/DOCDashboard.cshtml";
+}
+
+<style>
+    .status-container {
+        display: flex; /* Use flexbox for layout */
+        align-items: center; /* Center items vertically */
+        gap: 10px; /* Space between elements */
+        margin-left: 50px; /* Left margin for the entire container */
+    }
+
+    .status_appointment {
+        padding: 5px 10px; /* Smaller padding */
+        border: 1px solid #000; /* Retained border style */
+        border-radius: 20px; /* Reduced border radius */
+        background: transparent; /* Kept as is */
+        color: #000; /* Initial text color */
+        font-weight: bold; /* Kept as is */
+        font-size: 16px; /* Smaller font size */
+        cursor: pointer; /* Kept as is */
+        outline: none; /* Kept as is */
+    }
+
+    .save-btn {
+        padding-inline: 15px;
+        padding-block: 2px;
+        border: 1px solid green;
+        border-radius: 5px;
+        background-color: #fff;
+        text-decoration: none;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        color: #000; /* Initial text color */
+        font-weight: bold;
+        font-size: 20px;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        border-radius: 50px;
+        border: 1.5px solid #000;
+        cursor: pointer;
+      
+        outline: none;
+        overflow: hidden; /* Ensures the ::after effect stays within the button */
+    }
+
+        .save-btn::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -100%;
+            height: 100%;
+            width: 100%;
+            background-color: #000;
+            transition: all ease 0.4s;
+            z-index: -1;
+            border-radius: 16%;
+        }
+
+        .save-btn:hover::after {
+            bottom: 0;
+        }
+
+        /* Change the text color directly on hover */
+        .save-btn:hover {
+            color: #fff; /* Ensure the text turns white on hover */
+        }
+
+    .status_appointment::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -100%; /* Positioning for hover effect */
+        height: 100%; /* Full height */
+        width: 100%; /* Full width */
+        background-color: #000; /* Background color for effect */
+        transition: all ease 0.4s; /* Transition effect */
+        z-index: -1; /* Background positioning */
+        border-radius: 16%; /* Retained border radius */
+    }
+
+    .status_appointment:hover::after {
+        bottom: 0; /* Move up on hover */
+    }
+
+    .status_appointment:hover {
+        color: #fff; /* Change text color on hover */
+    }
+
+    .status_appointment option {
+        color: #000; /* Ensure options have a default black color */
+    }
+
+
+
+</style>
+
+
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid px-4">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                            Appointment List
+                        </h1>
+                    </div>
+                    <div class="col-12 col-xl-auto mb-3">
+                        <a class="btn btn-sm btn-light text-primary" href="@Url.Action("Dashboard", "Doctor")">
+                            <i class="me-1" data-feather="users"></i>
+                            Dashboard
+                        </a>
+                        <a class="btn btn-sm btn-light text-primary" href="@Url.Action("CreateSlots", "Doctor")">
+                            <i class="me-1" data-feather="user-plus"></i>
+                            Available Timing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container-fluid px-4">
+        <div class="card">
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Appointment Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Payment  ScreenShot</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.PatientName</td>
+                                <td>@item.AppointmentDate.ToShortDateString()</td>
+                                <td>@item.StartTime - @item.EndTime</td>
+                                <td>@item.AptStatus</td>
+                                <td><img style="width:200px; height:150px;" src="~/Content/Images/paymentscrenshot/@item.PaymentScreenshotName" /></td>
+                                <td>
+
+                                    <div class="status-container">
+                                        <span>
+                                            @*<select id="status_appointment">
+            <option value="0">Choose Status</option>
+            <option value="1">Pending</option>
+            <option value="2">Approved</option>
+            <option value="3">Declined</option>
+        </select>*@
+                                            @*<select class="status_appointment" id="status_@item.AppointmentID">
+            <option value="0">Choose Status</option>
+            <option value="1">Pending</option>
+            <option value="2">Approved</option>
+            <option value="3">Declined</option>
+        </select>*@
+
+                                            <select class="status_appointment" id="status_@item.AppointmentID">
+                                                <option value="0">Choose Status</option>
+                                                <option value="1">Pending</option>
+                                                <option value="2">Approved</option>
+                                                <option value="3">Declined</option>
+                                            </select>
+
+                                        </span>
+                                        <button class="save-btn" type="button" onclick="ChangeStatus(@item.AppointmentID)">Save</button>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    //function ChangeStatus(aptID) {
+
+    //    var StatusId = $("#status_" + aptID).val();
+
+    //    $.ajax({
+    //        url: '/Doctor/ChangeStatus',
+    //        type: 'POST',
+    //        data: {
+    //            appointmentId: aptID,
+    //            statusId: StatusId
+    //        },
+    //        success: function (response) {
+
+    //            if (response.success) {
+    //                alert("Status updated successfully");
+
+    //                window.location.reload();
+
+    //            } else {
+    //                alert("Failed to update status");
+    //            }
+    //        },
+    //        error: function (xhr) {
+    //            // Handle error
+    //        }
+    //    });
+    //};
+
+
+
+
+    function ChangeStatus(aptID) {
+        // Fetch the value from the specific dropdown
+        var StatusId = $("#status_" + aptID).val();
+
+        if (StatusId == "0") {
+            alert("Please select a valid status.");
+            return;
+        }
+
+        $.ajax({
+            url: '/Doctor/ChangeStatus',
+            type: 'POST',
+            data: {
+                appointmentId: aptID,
+                statusId: StatusId
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert("Status updated successfully");
+                    window.location.reload();
+                } else {
+                    alert("Failed to update status");
+                }
+            },
+            error: function (xhr) {
+                console.error("Error occurred:", xhr.responseText);
+            }
+        });
+    }
+
+</script>
+
+

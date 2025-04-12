@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/LoginLay.cshtml";
+}
+
+@model DoctorAppointment.Models.UserModel
+
+<section class="Login-Sec">
+    <video autoplay loop muted class="video-background">
+        <source src="~/assests/img/0e5896644e8498fb1f6910c4e7ee3af5-720p-preview%20(1)%20(online-video-cutter.com)%20(online-video-cutter.com).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="Inner-div">
+                    <div class="row w-100">
+                        <!-- Left content-->
+                        <div class="col-md-6" id="left-content">
+                            <div class="Inner-div" id="second">
+                                <video autoplay loop muted class="video-background">
+                                    <source src="~/assests/img/istock_19%20(online-video-cutter.com).mp4" type="video/mp4">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Right content -->
+                        <div class="col-md-6 d-flex align-items-center justify-content-center" id="right-content">
+                            <form class="slide-in" action="@Url.Action("Login", "Account")" method="post">
+                                <h2 class="text-center mb-4">Login</h2>
+                                <!-- Email input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="email" id="form2Example1" class="form-control" placeholder="Email address" name="UserName" required />
+                                 
+
+                                </div>
+
+                                <!-- Password input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="password" id="form2Example1" class="form-control" placeholder="Password" name="Password" required />
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col d-flex justify-content-center">
+                                        <!-- Checkbox -->
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                                            <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <a href="#!" style="text-decoration: none;">Forgot password?</a>
+                                    </div>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button class="nav-button" id="btm-xwhy" type="submit">
+                                    <span>Login</span>
+                                </button>
+
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Not a member? <a href="@Url.Action("Register", "Account")" style="text-decoration: none;">Register</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

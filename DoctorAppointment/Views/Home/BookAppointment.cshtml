@@ -1,0 +1,452 @@
+﻿
+@{
+    ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/bookAppointLay.cshtml";
+}
+
+
+
+
+
+
+@*   //function BindSlots(response) {
+      //    if (response.length === 0) {
+      //        $('.slot-outer-box').empty();
+      //        $('#no_slot').show();
+      //    } else {
+      //        $('#no_slot').hide();
+      //        $('.slot-outer-box').empty();
+      //        response.forEach(slot => {
+
+      //            let startTime = new Date(slot.StartTime.TotalMilliseconds);
+      //            let endTime = new Date(slot.EndTime.TotalMilliseconds);
+
+      //            let formattedStartTime = `${startTime.getHours().toString().padStart(2, '0')}:${startTime.getMinutes().toString().padStart(2, '0')}`;
+      //            let formattedEndTime = `${endTime.getHours().toString().padStart(2, '0')}:${endTime.getMinutes().toString().padStart(2, '0')}`;
+
+      //            let slotHTML = `
+      //             <div class="slot-box badge bg-primary-soft text-primary py-2 px-3 mb-2">
+        //                 <input type="radio" id="${slot.SlotId}" value="${slot.SlotId}" name="SlotId" required />
+        //                 <label for="${slot.SlotId}">${formattedStartTime} - ${formattedEndTime}</label>
+        //
+    </div>
+      //         `;
+      //            $('.slot-outer-box').append(slotHTML);
+
+      //            console.log(slotHTML);
+      //        });
+      //    }
+      //} *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    function onDateChange() {
+        let selectedDate = document.getElementById('booking_date').value;
+        let date = new Date(selectedDate);
+        let DayOfWeek = date.getDay();
+        $.ajax({
+            url: '/Home/GetSlot',
+            type: 'GET',
+            dataType: 'JSON',
+            data: { DayOfWeek: DayOfWeek },
+            success: function (response) {
+                BindSlots(response);
+            },
+            error: function (xhr, status, error) {
+                alert("An error occurred while fetching slots. Please try again.");
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+
+        let SelectedDate = $('#booking_date').val();
+        let date = new Date(SelectedDate);
+        let DayOfWeek = date.getDay();
+
+        $.ajax({
+            url: '/Home/GetSlot',
+            type: "GET",
+            data: { DayOfWeek: DayOfWeek },
+            dataType: "json",
+            success: function (response) {
+                BindSlots(response);
+            },
+            error: function (xhr, status, error) {
+                alert("An error occurred while fetching slots. Please try again.");
+            }
+        });
+    });
+
+
+
+    function BindSlots(response) {
+        if (response.length === 0) {
+            $('.slot-outer-box').empty();
+            $('#no_slot').show();
+        } else {
+            $('#no_slot').hide();
+            $('.slot-outer-box').empty();
+            response.forEach(slot => {
+                let slotHTML = `
+                <div class="slot-box badge bg-primary-soft text-primary py-2 px-3 mb-2">
+                    <input type="radio" id="${slot.SlotId}" value="${slot.SlotId}" name="SlotId" required/>
+                    <label for="${slot.SlotId}">${slot.StartTime} - ${slot.EndTime}</label>
+                </div>
+            `;
+                $('.slot-outer-box').append(slotHTML);
+            });
+        }
+    }
+
+
+
+</script>
+<
+<section class="Login-Sec">
+    <video autoplay loop muted class="video-background">
+        <source src="~/content/video/istock_video_1732989540771.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <h2 class="headingbooking-appp" style="font-family: Berlin Sans FB">BOOKING APPOINTMENTS</h2>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="Inner-div" id="innerdiv-idcer">
+                    <div class="row w-100">
+                        <!-- Left content -->
+                        <div class="col-md-6 d-flex align-items-center justify-content-center" id="left-content">
+                            <form action="@Url.Action("BookAppointment","Home")" method="post" enctype="multipart/form-data" class="slide-in">
+                                <h2 class="text-center mb-4" style="font-family: Berlin Sans FB">BOOK APPOINTMENT</h2>
+
+                                <label for="ConsultingFee" id="consul">Fee</label>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input class="form-control" type="text" name="Fee" value="@ViewBag.AppointmentFees" readonly>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <!-- Phone input -->
+                                    <div class="col-md-6 col-sm-12" id="coling-ungl">
+                                        <div class="mb-3 card-label">
+                                            <label class="mb-2">Booking Date</label>
+                                            <input class="form-control" type="date" id="booking_date" onchange="onDateChange()" name="AppointmentDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 dc-timeslots dc-update-timeslots slot-outer-box">
+                                        <h4 id="no_slot" style="display: none;">No Slot Available</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="mb-3 card-label">
+                                        <label class="mb-2">Upload Payment Screenshot</label>
+                                        <input class="form-control" name="PaymentScrenshot" type="file" required>
+                                    </div>
+                                </div>
+
+
+                                <!-- Submit button -->
+                                <button class="nav-button" id="btm-xwhy" type="submit" style="margin-left: 100px;">
+                                    <span>Submit</span>
+                                </button>
+
+                            </form>
+                        </div>
+
+                        <!-- Right content (new form) -->
+                        <div class="col-md-6">
+                            <div class="wrapper">
+                                <div class="carousel">
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🫀</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Heart</p>
+                                            <p>Cardiac function, vital health.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🧠</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Brain</p>
+                                            <p>Cognitive control, neural health.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🫁</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Lungs</p>
+                                            <p>Respiratory function, oxygen exchange.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🧬</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">DNA</p>
+                                            <p>Genetic blueprint, hereditary code.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🩼</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Crutch</p>
+                                            <p>Mobility aid, weight support.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">💉</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Syringe</p>
+                                            <p>Injection tool, medication delivery.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🦠</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Bacteria</p>
+                                            <p>Microorganisms, diverse functions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🍤</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Stomach</p>
+                                            <p>Digestion organ, nutrient absorption.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🤰</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Pregnancy</p>
+                                            <p>Gestation period, fetal development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End of right content -->
+                    </div> <!-- End of row -->
+                </div> <!-- End of Inner-div -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<section class="Login-Sec">
+        <video autoplay loop muted class="video-background">
+            <source src="~/assests/vid/istock_1352005119.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="container">
+            <h2 class="headingbooking-appp" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">BOOKING APPOINTMENTS</h2>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="Inner-div" id="innerdiv-idcer">
+                        <div class="row w-100">
+                             Left content
+    <div class="col-md-6 d-flex align-items-center justify-content-center" id="left-content">
+
+        <form  action="@Url.Action("BookAppointment","Home")" method="post" enctype="multipart/form-data">
+            class="slide-in">
+            <h2 class="text-center mb-4" style="font-family: futura;">BOOK APPOINTMENT</h2>
+
+
+
+            <label for="ConsultingFee" id="consul">Fee</label>
+            <div data-mdb-input-init class="form-outline mb-4">
+    <input type="text" class="form-control" id="inputsecdes" name="Fee" value="@ViewBag.FeeAmount" readonly />
+    <input class="form-control" type="text" name="Fee" value="@ViewBag.AppointmentFees" readonly>
+    </div>
+
+
+
+
+            <div class="row">
+                Phone input
+                <div class="col-md-6 col-sm-12" id="coling-ungl">
+                    <div class="mb-3 card-label">
+                        <input class="form-control" type="date" id="booking_date" required onchange="bookingDate()">
+                        <label class="mb-2">Booking Date</label>
+                        <input class="form-control" type="date" id="booking_date" onchange="onDateChange()" name="AppointmentDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                    </div>
+                </div>
+
+
+
+                <div class="mt-4 dc-timeslots dc-update-timeslots slot-outer-box">
+                    <h4 id="no_slot" style="display: none;">No Slot Available</h4>
+                    <div class="mt-4 dc-timeslots dc-update-timeslots" id="available_slots">
+                        <span class="dc-radio next-step">
+                            <input type="radio" id="slot1" name="booking_slot" value="1100" onchange="handleRadioChange(this)">
+                            <label for="slot1"><span>11:00 am</span></label>
+                        </span>
+                        <span class="dc-radio next-step">
+                            <input type="radio" id="slot2" name="booking_slot" value="1120" onchange="handleRadioChange(this)">
+                            <label for="slot2"><span>11:20 am</span></label>
+                        </span>
+                        <span class="dc-radio next-step">
+                            <input type="radio" id="slot3" name="booking_slot" value="1140" onchange="handleRadioChange(this)">
+                            <label for="slot3"><span>11:40 am</span></label>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+              <div class="col-md-12 col-sm-12">
+                  <div class="mb-3 card-label">
+                      <label class="mb-2">Upload Payment Screenshot</label>
+                      <input class="form-control" name="PaymentScrenshot" type="file">
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="file" class="form-control" id="inputsecdes" required />
+           </div>
+
+
+
+     Submit button
+    <button class="nav-button" id="btm-xwhy" type="submit">
+                   <span>Submit</span>
+                    </button>
+                       </div>
+    </form>
+     Right content (new form)
+    <div class="col-md-6">
+
+
+
+                            <div class="wrapper">
+                                <div class="carousel">
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🫀</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Heart</p>
+                                            <p>Cardiac function, vital health.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🧠</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Brain</p>
+                                            <p>Cognitive control, neural health.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🫁</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Lungs</p>
+                                            <p>Respiratory function, oxygen exchange.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🧬</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">DNA</p>
+                                            <p>Genetic blueprint, hereditary code.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🩼</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Crutch</p>
+                                            <p>Mobility aid, weight support.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">💉</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Syringe</p>
+                                            <p>Injection tool, medication delivery.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🦠</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Bacteria</p>
+                                            <p>Microorganisms, diverse functions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🍤</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Stomach</p>
+                                            <p>Digestion organ, nutrient absorption.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel__item">
+                                        <div class="carousel__item-head">🤰</div>
+                                        <div class="carousel__item-body">
+                                            <p class="title">Pregnancy</p>
+                                            <p>Gestation period, fetal development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>*@
