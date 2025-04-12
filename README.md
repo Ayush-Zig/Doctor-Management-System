@@ -14,3 +14,42 @@ Proposed System
 WEBSITE HOMEPAGE
 
 ![Screenshot 2025-04-12 155204](https://github.com/user-attachments/assets/dceebc1b-093d-4614-8b73-bccbc64ab4f4)
+![Screenshot 2025-04-12 155309](https://github.com/user-attachments/assets/3de4f1b2-a15d-4aea-8654-67b039fdb562)
+![Screenshot 2025-04-12 155334](https://github.com/user-attachments/assets/dc12e3bd-e036-4f3b-8f2a-d83912f27505)
+![Screenshot 2025-04-12 155436](https://github.com/user-attachments/assets/e274e518-1369-44ec-94f7-9dc8e7a4c4a3)
+![Screenshot 2025-04-12 155508](https://github.com/user-attachments/assets/556f071e-fcd1-48ba-a487-07b8e8a3406e)
+
+REGISTER PAGE
+
+![Screenshot 2025-04-12 155536](https://github.com/user-attachments/assets/10adf87c-0b7c-4e58-8f9d-5aea65aaeaad)
+
+LOGIN 
+
+![Screenshot 2025-04-12 155557](https://github.com/user-attachments/assets/6c702fdc-3d59-4a41-8781-89a66c3711b6)
+
+USER CORNER
+
+![Screenshot 2025-04-12 155638](https://github.com/user-attachments/assets/adb8c5f8-1d03-463d-97f7-e39623b1879b)
+
+USER APPOINTMENT LIST
+
+![Screenshot 2025-04-12 155709](https://github.com/user-attachments/assets/a1d4de42-2b26-416c-904f-641f4b477852)
+
+BOOKING APPOINTMENT
+
+![Screenshot 2025-04-12 155733](https://github.com/user-attachments/assets/b1c7f331-0387-4e39-93f6-b4d6e36a6568)
+
+DOCTOR CORNER
+
+![Screenshot 2025-04-12 155945](https://github.com/user-attachments/assets/fc2992f1-e730-44e3-a33a-414844036d39)
+
+APPOINTMENT LIST OF PATIENTS
+
+![Screenshot 2025-04-12 160004](https://github.com/user-attachments/assets/f287b4f0-aa00-48df-99ca-c50d86e71966)
+
+SCHEDULE CHANGE
+
+![Screenshot 2025-04-12 160028](https://github.com/user-attachments/assets/29160f41-ea3b-4cf8-b33c-0d7d74490170)
+
+UPDATE FEE
+![Screenshot 2025-04-12 160050](https://github.com/user-attachments/assets/85f717bd-18d0-46bc-a360-3eceeeaa7c8d)
